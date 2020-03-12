@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="raw mt-4">
+        <div class="col">
+            <h2>Add items</h2>
+            <form action="{% url 'add_todo' %}" method="post" class="form-inline">
+                <input type="text" name="content" class="form-control mb-2" placeholder="Type here....">
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="raw mt-4">
+        <div class="col">
+            {% for foo in show_created_todo_item %}
+                <ul class="list-group">
+                    <li class="list-group-item ">{{ foo.text }} : {{ foo.date_added }}
+                        <div class="float-right">
+                            <form action="delete_todo/{{ foo.id }}/" method="post">
+                                <button class="btn btn-sm btn-danger" type="submit">Delete</button>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
