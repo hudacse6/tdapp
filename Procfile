@@ -1,1 +1,1 @@
-web: gunicorn MyToDoApp.wsgi
+web: gunicorn mytdapps.wsgi
